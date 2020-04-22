@@ -1,0 +1,1 @@
+kivy-deps.gstreamer==0.2.0
