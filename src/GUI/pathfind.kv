@@ -1,0 +1,37 @@
+WindowManager:
+	login_screen:
+	main_activity:
+	
+<login_screen>:
+	name: "login_screen_interaction"
+	GridLayout:
+		cols: 1
+		size: 500,500
+		GridLayout:
+			cols: 2
+			Label:
+				text: "Username"
+
+			TextInput:
+				id: username
+				multiline: False
+
+			Label:
+				text: "Password"
+
+			TextInput:
+				id: password
+				multiline: False
+				
+		Button:
+			text: "Login"
+			on_release: 
+				app.root.current = "path_finding_interaction"
+
+<main_activity>:
+	name: "path_finding_interaction"
+
+	Button:
+		text: "Go Back"
+		on_release: 
+			app.root.current = "login_screen_interaction"
