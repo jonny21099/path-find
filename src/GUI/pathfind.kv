@@ -1,12 +1,20 @@
 WindowManager:
-	login_screen:
-	main_activity:
-	
-<login_screen>:
+	LoginScreen:
+	MainActivity:
+
+<LoginScreen>:
 	name: "login_screen_interaction"
 	GridLayout:
-		cols: 1
-		size: 500,500
+		cols: 1	
+		padding: 200
+		row_force_default: True
+		col_force_default: True
+		row_default_height: '60dp'
+		col_default_width: '300dp'
+		size_hint_x: None
+		size_hint_y: None
+		height: self.minimum_height
+
 		GridLayout:
 			cols: 2
 			Label:
@@ -19,16 +27,18 @@ WindowManager:
 			Label:
 				text: "Password"
 
+
 			TextInput:
 				id: password
 				multiline: False
 				
 		Button:
 			text: "Login"
+			size_hint: 0,0.30
 			on_release: 
 				app.root.current = "path_finding_interaction"
 
-<main_activity>:
+<MainActivity>:
 	name: "path_finding_interaction"
 
 	Button:

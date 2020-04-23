@@ -6,28 +6,20 @@ from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
-class login_screen(Screen):
-	# username = ObjectProperty(None)
-	# password = ObjectProperty(None)
-
-	# def btn(self):
-		
-	# 	self.username.text = ""
-	# 	self.password.text = ""
+class LoginScreen(Screen):
 	pass
 
-class main_activity(Screen):
+class MainActivity(Screen):
 	pass
 
 class WindowManager(ScreenManager):
 	pass
 
-GUI = Builder.load_file("pathfind.kv")
+interface = Builder.load_file("pathfind.kv")
 
 class PathFinder(App):
-    def build(self):
-        return GUI
-
+	def build(self):
+		return interface
 
 if __name__ == '__main__':
-    PathFinder().run()
+	PathFinder().run()
