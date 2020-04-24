@@ -8,6 +8,8 @@ from kivy.app import App
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from kivy.uix.popup import Popup
+from kivy.uix.floatlayout import FloatLayout
 
 #connects to the sqlite3 database stored as users.db in the local storage
 conn = sqlite3.connect("users.db")
@@ -28,12 +30,19 @@ class LoginScreen(Screen):
 		if (len(check) == 0):
 			c.execute("INSERT INTO users VALUES (?, ?)",(self.username.text, self.password.text))
 			conn.commit()
+			show = RegisterSuccessPopup()
+			message = "Success"
 		else:
-			return 
+			show = RegisterFailurePopup()
+			message = "Failed"
+
+		popupWindow = Popup(title = message, content = show, size_hint = (None, None), size = (400, 150), auto_dismiss = False)
+		popupWindow.open()
 
 	#login button, handles all checks for database error
-	def LoginBtn(self):
-		pass
+# 	def LoginBtn(selfsqlite> select * from users
+# ):
+# 		pass
 
 #this will be the screen that deals with path finding interactions
 class MainActivity(Screen):
@@ -41,6 +50,14 @@ class MainActivity(Screen):
 
 #window manager deals with the transitino between the two screens
 class WindowManager(ScreenManager):
+	pass
+
+#popup for successfully registered
+class RegisterSuccessPopup(FloatLayout):
+	pass
+
+#popup for registration failure
+class RegisterFailurePopup(FloatLayout):
 	pass
 
 #loading in the pathfind.kv file
