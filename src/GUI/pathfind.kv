@@ -4,19 +4,24 @@ WindowManager:
 
 <LoginScreen>:
 	name: "login_screen_interaction"
+	username: username
+	password: password
 	GridLayout:
 		cols: 1	
 		padding: 200
+		pos_hint: {"center_x": 0.5, "center_y": 0.5}
 		row_force_default: True
 		col_force_default: True
-		row_default_height: '60dp'
+		row_default_height: '100dp'
 		col_default_width: '300dp'
 		size_hint_x: None
 		size_hint_y: None
 		height: self.minimum_height
+		width: self.minimum_width
 
 		GridLayout:
 			cols: 2
+			#the usernmae and the textinput
 			Label:
 				text: "Username"
 
@@ -24,19 +29,25 @@ WindowManager:
 				id: username
 				multiline: False
 
+			#the password and the textinput
 			Label:
 				text: "Password"
-
 
 			TextInput:
 				id: password
 				multiline: False
-				
-		Button:
-			text: "Login"
-			size_hint: 0,0.30
-			on_release: 
-				app.root.current = "path_finding_interaction"
+
+			#the register button, when released will handle all the registration
+			Button:
+				text: "Register"
+				on_release:
+					root.RegisterBtn()
+
+			#the login button, when released will switch to the other screen
+			Button:
+				text: "Login"
+				on_release: 
+					app.root.current = "path_finding_interaction"
 
 <MainActivity>:
 	name: "path_finding_interaction"
