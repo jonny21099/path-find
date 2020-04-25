@@ -80,7 +80,7 @@ class LoginScreen(Screen):
 
 		#if all checks are satisfied switch into the mainactivity
 		else:
-			sm.current = "path_finding_interaction"
+			self.manager.current = "path_finding_interaction"
 
 #create the manager
 sm = ScreenManager()
