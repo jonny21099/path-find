@@ -1,11 +1,11 @@
 from src.utilities.algorithms.bfs import run_bfs
+from src.utilities.algorithms.a_star import run_a_star
 
 def driver(array):
 	# TODO: Check errors
 
 	grid = Grid(array)
-	arr = run_bfs(grid)
-	arr.reverse()
+	arr = run_a_star(grid)
 	print(arr)
 
 
