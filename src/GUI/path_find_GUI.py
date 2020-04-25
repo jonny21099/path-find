@@ -82,13 +82,6 @@ class LoginScreen(Screen):
 		else:
 			self.manager.current = "path_finding_interaction"
 
-#create the manager
-sm = ScreenManager()
-
-#setup the screens
-sm.add_widget(LoginScreen(name="login_screen_interaction"))
-sm.add_widget(MainActivity(name="path_finding_interaction"))
-
 #loading in the pathfind.kv file
 interface = Builder.load_file("pathfind.kv")
 
