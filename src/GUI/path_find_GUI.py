@@ -77,10 +77,10 @@ class LoginScreen(Screen):
 			popupWindow = Popup(title = prompt, content = loginErrorPopup, size_hint = (None, None), size = (400, 150), auto_dismiss = False)
 			loginErrorPopup.add_widget(Button(text="ok", on_press = popupWindow.dismiss, size_hint = (0.2, 0.4), pos_hint = {"center_x": 0.5,"y": 0.1}))
 			popupWindow.open()
-			
+
 		#if all checks are satisfied switch into the mainactivity
 		else:
-			return
+			sm.current = "path_finding_interaction"
 
 #create the manager
 sm = ScreenManager()
