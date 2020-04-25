@@ -57,10 +57,11 @@ class LoginScreen(Screen):
 		registerErrorPopup.add_widget(Button(text="ok", on_press = popupWindow.dismiss, size_hint = (0.2, 0.4), pos_hint = {"center_x": 0.5,"y": 0.1}))
 		popupWindow.open()
 
-
+	#login button, handles all chekcs for database error
 	def LoginBtn(self):
 		c.execute("SELECT * FROM users WHERE username = ?", (self.username.text,))
 		logincheck = c.fetchall()
+		#check if username exists
 		if(len(logincheck) == 0):
 			prompt = "Error"
 			loginErrorPopup = BoxLayout(orientation = "vertical")
@@ -70,6 +71,7 @@ class LoginScreen(Screen):
 			loginErrorPopup.add_widget(Button(text="ok", on_press = popupWindow.dismiss, size_hint = (0.2, 0.4), pos_hint = {"center_x": 0.5,"y": 0.1}))
 			popupWindow.open()
 
+		#check if password is correct
 		elif(len(logincheck) == 1 and logincheck[0][1] != self.password.text):
 			prompt = "Error"
 			loginErrorPopup = BoxLayout(orientation = "vertical")
