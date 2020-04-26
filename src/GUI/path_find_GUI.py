@@ -8,6 +8,7 @@ from kivy.app import App
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from kivy.uix.textinput import TextInput
 from kivy.uix.popup import Popup
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -24,7 +25,31 @@ Config.set("graphics", "resizable", False)
 
 #this will be the screen that deals with path finding interactions
 class MainActivity(Screen):
-	pass
+	userInput = BoxLayout(orientation="vertical")
+	label = Label(text = "What size should the grid be? (numbers only)")
+	userInput.add_widget(label)
+
+	sizeInput = BoxLayout(orientation="horizontal")
+	emptyLabel = Label(text = "")
+	sizeInput.add_widget(emptyLabel)
+	sizeInput1 = TextInput(multiline = False, padding = (28,12))
+	sizeInput1.input_filter = "int"
+	sizeInput.add_widget(sizeInput1)
+
+	xLabel = Label(text = " x ")
+	sizeInput.add_widget(xLabel)
+	sizeInput2 = TextInput(multiline = False, padding = (28,12))
+	sizeInput2.input_filter = "int"
+	sizeInput.add_widget(sizeInput2)
+	emptyLabel = Label(text = "")
+	sizeInput.add_widget(emptyLabel)
+
+
+	userInput.add_widget(sizeInput)
+
+	popupWindow = Popup(title = "Works", content = userInput, size_hint = (None, None), size = (400, 150), auto_dismiss = False)
+
+
 
 #window manager deals with the transitino between the two screens
 class WindowManager(ScreenManager):
@@ -82,6 +107,7 @@ class LoginScreen(Screen):
 
 		#if all checks are satisfied switch into the mainactivity
 		else:
+			MainActivity.popupWindow.open()
 			self.manager.current = "path_finding_interaction"
 
 #loading in the pathfind.kv file
