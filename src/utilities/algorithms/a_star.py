@@ -17,13 +17,16 @@ class Cell():
 	def __repr__(self):
 		return "%s" % (self.location,)
 
+	def __eq__(self, other):
+		return self.location == other.location
+
 def run_a_star(grid):
 	open_list = []
 	closed_list = []
 	solution = []
 
 	start_cell = Cell(None, grid.start)
-	end_cell = Cell(None, grid.end)
+
 
 	open_list.append(start_cell)
 
@@ -35,9 +38,9 @@ def run_a_star(grid):
 			if cell.f < current_cell.f:
 				current_cell = cell
 
-		# print(current_cell)
+		# print(len(open_list))
 		open_list.remove(current_cell)
-		print(open_list)
+		# print(len(open_list))
 		closed_list.append(current_cell)
 
 		if current_cell.location == grid.end:
@@ -50,7 +53,7 @@ def run_a_star(grid):
 
 		children = []
 
-		for adjacent_cell in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
+		for adjacent_cell in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
 
 			cell_location = (current_cell.location[0] + adjacent_cell[0],
 				current_cell.location[1] + adjacent_cell[1])
@@ -72,7 +75,7 @@ def run_a_star(grid):
 
 			child.g = current_cell.g + 1
 			# Using Manhattan distance as our Heuristic
-			child.h = abs(current_cell.location[0] - grid.end[0]) + abs(current_cell.location[1] - grid.end[1])
+			child.h = ((child.location[0] - grid.end[0])) ** 2 + ((child.location[1] - grid.end[1])) ** 2
 			child.f = child.g + child.h
 
 
@@ -80,12 +83,11 @@ def run_a_star(grid):
 				if child == open_cell and child.g > open_cell.g:
 					continue
 
-			print(child.location)
-			print()
-			if child.location not in open_list:
-				open_list.append(child)
 
-			time.sleep(.7)
+			# if not any(x.location == child.location for x in ):
+			open_list.append(child)
+
+			# time.sleep(.7)
 
 	# print(open_list)
 

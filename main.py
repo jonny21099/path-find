@@ -3,7 +3,7 @@
 from src.process_input import driver
 
 
-test_array = [[0, 0, 0, 3, 0, 0, 0],
+test_array = [[0, 0, 0, 0, 0, 0, 0],
 			  [0, 0, 0, 3, 0, 0, 0],
 			  [0, 0, 0, 3, 0, 0, 0],
 			  [0, 1, 0, 3, 0, 2, 0],

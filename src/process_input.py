@@ -13,8 +13,8 @@ class Grid():
 
 	def __init__(self, array):
 		self.grid = array
-		self.height = len(array)
-		self.width = len(array[0])
+		self.height = len(array) - 1
+		self.width = len(array[0]) - 1
 		self.start = ()
 		self.end = ()
 		self.walls = []
