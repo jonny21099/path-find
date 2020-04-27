@@ -1,11 +1,11 @@
 from src.utilities.algorithms.bfs import run_bfs
+from src.utilities.algorithms.a_star import run_a_star
 
 def driver(array):
 	# TODO: Check errors
 
 	grid = Grid(array)
-	arr = run_bfs(grid)
-	arr.reverse()
+	arr = run_a_star(grid)
 	print(arr)
 
 
@@ -13,8 +13,8 @@ class Grid():
 
 	def __init__(self, array):
 		self.grid = array
-		self.height = len(array)
-		self.width = len(array[0])
+		self.height = len(array) - 1
+		self.width = len(array[0]) - 1
 		self.start = ()
 		self.end = ()
 		self.walls = []

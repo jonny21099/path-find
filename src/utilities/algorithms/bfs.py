@@ -1,6 +1,5 @@
 from collections import deque
 
-
 def run_bfs(grid):
 	frontier = deque()
 	solution = {}
@@ -38,15 +37,22 @@ def run_bfs(grid):
 			frontier.append(below_cell)
 			visited.add(below_cell)
 
-
+	print(solution)
 	return find_shortest(grid, solution)
 
 
 def find_shortest(grid, solution):
 	x, y = grid.end
 	path_reverse = []
-	while (x,y) != grid.start:
+
+	try:
+		while (x,y) != grid.start:
+			path_reverse.append((x, y))
+			x, y = solution[x,y]
+
 		path_reverse.append((x, y))
-		x, y = solution[x,y]
+
+	except KeyError:
+		print("Error: No solution found")
 
 	return path_reverse
