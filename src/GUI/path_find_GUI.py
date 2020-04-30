@@ -2,7 +2,6 @@ import kivy
 kivy.require('1.11.1') 
 
 import sqlite3
-
 from kivy.config import Config
 from kivy.app import App
 from kivy.properties import ObjectProperty
